@@ -19,9 +19,11 @@ retourner l’ensemble des opérandes stockées.
 public class Moteur_Rpn 
 {
     Stack pile =new Stack();
+    
+    Stack d= new Stack();
     public void enregistrer (double operande)
     {
-        pile.add(operande);
+        pile.push(operande);
     }
      public double apply (char symbole,double a, double b)
      {
@@ -37,11 +39,19 @@ public class Moteur_Rpn
             case '-':
               return Operation.MOINS.eval(a, b);
               
-              
               case '/':
-                 return Operation.DIVISION.eval(a, b);
-         
+                 return Operation.DIVISION.eval(a, b);   
          }
-         
+         return 0;
+     }     
+     //retourner les operansdes stockés
+        public double dépiler()
+        {
+           if (!pile.empty())
+            {  
+               return (double) pile.pop();    
+            }
+            return 0;
+        } 
      }
-}
+     
