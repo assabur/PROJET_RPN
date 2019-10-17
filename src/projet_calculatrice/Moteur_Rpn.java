@@ -6,6 +6,7 @@
 package projet_calculatrice;
 
 import java.util.Stack;
+import projet_calculatrice.Operation;
 
 /**
  *
@@ -24,16 +25,23 @@ public class Moteur_Rpn
     }
      public double apply (char symbole,double a, double b)
      {
-         Operation monoperation = Operation monoperation.eval(a, b);
+         Operation monoperation;
          switch(symbole)
          {
              case '+':
+                 return Operation.PLUS.eval(a, b);
                  
-         
+             case '*':
+                 return Operation.MULTIPLICATION.eval(a, b);
+                 
+            case '-':
+              return Operation.MOINS.eval(a, b);
+              
+              
+              case '/':
+                 return Operation.DIVISION.eval(a, b);
          
          }
-         
-         
          
      }
 }
